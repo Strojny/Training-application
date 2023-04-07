@@ -1,31 +1,31 @@
 
 //1
 
-const array1A = [
+const firstArray = [
     2,
     5,
 ];
 
-const array1B = [
+const secondArray = [
     3,
     7,
 ];
 
-const mergeArrays = (array1, array2) => [...array1, ...array2];
+const mergeArrays = (firstArray, secondArray) => [...firstArray, ...secondArray];
 
-mergeArrays(array1A, array1B);
+mergeArrays(firstArray, secondArray);
 
 //2
 
-const exceptFirst = ( _, ...otherParameters ) => otherParameters;
+const exceptFirst = (_, ...otherParameters) => otherParameters;
 
-const array2 = (2, "delfin", null);
+const array2 = [2, "delfin", null];
 
 //3
 
-const array3 = [1, 3, undefined, true];
+const argsArray = [1, 3, undefined, true];
 
-const last2Parameters = array3 => array3.slice(-2);
+const last2Parameters = (...argsArray) => argsArray.slice(-2);
 
 //4
 
@@ -35,6 +35,8 @@ const indexOf = (element, indexArray) => indexArray.indexOf(element);
 
 indexOf("kawa", indexArray);
 
+const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+
 //5
 
 const tasks = [
@@ -42,7 +44,7 @@ const tasks = [
     { content: "kupic balony", }
 ];
 
-const findNonEmptyTask = tasks.find(task => task !== "");
+const findNonEmptyTask = (tasks) => tasks.find(task => task !== "");
 
 //6
 
@@ -54,7 +56,7 @@ const oddIndex = numbers => numbers.findIndex(number => number % 2 !== 0);
 
 const fruits = ["banan", "marakuja"];
 
-const hasStrawberry = fruits => fruits.includes("strawberry");
+const hasStrawberry = (fruits) => fruits.includes("strawberry");
 
 //8
 
@@ -63,7 +65,7 @@ const people = [
     { name: "Kosmo", age: 19 },
 ];
 
-const someAdult = people => people.some(({ age }) => age > 18);
+const someAdult = people => people.some(({ age }) => age >= 18);
 
 //9
 
@@ -72,7 +74,7 @@ const strings = [
     "zelazko",
 ];
 
-const onlyString = strings => strings.every(string => typeof (string) === 'string');
+const onlyString = (...strings) => strings.every(string => typeof (string) === 'string');
 
 //10
 
@@ -101,13 +103,12 @@ const cars = [
 
 const getColors = cars => cars.map(car => car.color);
 
-//12
+//12 ?
 
 const persons = [
     { name: "Krzychu", age: 30 },
     { name: "Zdzichu", age: 20 },
 ];
 
-const getAge = (persons) => `${persons.age}`;
-
-const sortPeople = persons => persons.sort((person1, person2) => getAge(person1).localeCompare(getAge(person2)));
+const sortPeople = (persons) => persons.sort((a, b) => a.age - b.age);
+sortPeople(persons);
